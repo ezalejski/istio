@@ -5,7 +5,7 @@ enabled: true
 replicaCount: 1
 hub: docker.io/prom
 tag: v2.8.0
-retention: 6h
+retention: 20d
 nodeSelector: {}
 
 # Specify the pod anti-affinity that allows you to constrain which nodes
@@ -61,7 +61,7 @@ persistentVolume:
   ## If true, Prometheus server will create/use a Persistent Volume Claim
   ## If false, use emptyDir
   ##
-  enabled: false
+  enabled: true
 
   ## Prometheus server data Persistent Volume access modes
   ## Must match those of existing PV or dynamic provisioner
@@ -81,11 +81,11 @@ persistentVolume:
 
   ## Prometheus server data Persistent Volume mount root path
   ##
-  mountPath: /data
+  mountPath: "/prometheus/data"
 
   ## Prometheus server data Persistent Volume size
   ##
-  size: 8Gi
+  size: 100Gi
 
   ## Prometheus server data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
